@@ -7,14 +7,15 @@ const burger = props => {
   let transformedIngredients = Object.keys(props.ingredients)
     .map(igKey => {
       return [...Array(props.ingredients[igKey])].map((_, i) => {
+        //blank argument using _
         return <BurgerIngredient key={igKey + i} type={igKey} />;
       }); // transform obj to array
     })
     .reduce((arr, el) => {
       return arr.concat(el);
     }, []); // flatting the array !!! need recap sometime
-  if (transformedIngredients === 0) {
-    transformedIngredients = <p>Please add ingredients</p>;
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = <p>Please add ingredients ...</p>;
   }
   console.log(transformedIngredients);
   return (
